@@ -1,0 +1,6 @@
+C:\Users\Светлана\Desktop\My\BJ\bin\Release\BJ.exe.config
+C:\Users\Светлана\Desktop\My\BJ\bin\Release\BJ.exe
+C:\Users\Светлана\Desktop\My\BJ\bin\Release\BJ.pdb
+C:\Users\Светлана\Desktop\My\BJ\obj\Release\BJ.exe
+C:\Users\Светлана\Desktop\My\BJ\obj\Release\BJ.pdb
+C:\Users\Светлана\Desktop\My\BJ\obj\Release\BJ.csprojResolveAssemblyReference.cache
