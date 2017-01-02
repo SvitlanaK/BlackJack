@@ -14,7 +14,7 @@ namespace BJ
          public bool IsDealer { get; set; }
         Card card = new Card();
         private readonly List<Card> cards = new List<Card>(5);
-        public List<Card> Cards
+        public  List<Card> Cards
         {
             get
             {
@@ -27,7 +27,7 @@ namespace BJ
             int sum = 0;
             foreach (var c in cards)
             {
-                if ((int)c.rank > 1 && (int)c.rank < 11)
+                if ((int)c.rank > 1 && (int)c.rank < 10)
                 {
                     sum += (int)c.rank;
                 }
@@ -45,10 +45,7 @@ namespace BJ
             {
                 var value = Softvalue();
                 var count = cards.Count(c => c.rank == Rank.Ace);
-                if(count-- > 0  && value > 21)
-                {
-                    value -= 9;
-                }
+               
                 return value;
             }
         
@@ -61,10 +58,7 @@ namespace BJ
                 var faceValue = cards.Where(c => c.FaceUp)
                     .Select(c => (int)c.rank > 1 && (int)c.rank < 11 ? (int)c.rank : 10).Sum();
                 var count = cards.Count(c => c.rank == Rank.Ace);
-                if (count-- > 0 && faceValue > 21)
-                {
-                    faceValue -= 9;
-                }
+              
                 return faceValue;
             }
         }
