@@ -7,7 +7,7 @@ namespace BlackJack.Console
     
     public class GameConsole
     {
-        Game game = new Game();
+        GameValidate game = new GameValidate();
         public  string Print(Card card)
         {
             char suite = '?';
@@ -32,23 +32,19 @@ namespace BlackJack.Console
 
             return num + " " + suite;
         }
-        public void DealerHand()
+        public void HandCard(Hand hand)
         {
-            Console.WriteLine("Dealer's hand({0})", game.Dealer.Hand.FaceValue);
+            var user = hand.IsDealer ? "DEALER" : "PLAYER";
+            var name = hand.IsDealer ? game.Dealer : game.Player;
+            var value = hand.IsDealer ? game.Dealer.FaceValue : game.Player.TotalValue;
+            Console.WriteLine("{0}'s hand({1})",user, value);
 
-            for (int i = 0; i < game.Dealer.Hand.Cards.Count; i++)
+            for (int i = 0; i < name.Cards.Count; i++)
             {
-                Console.WriteLine(game.Dealer.Hand.Cards[i].FaceUp ? Print(game.Dealer.Hand.Cards[i]) : "XXX");
+                Console.WriteLine(name.Cards[i].FaceUp ? "XXX": Print(name.Cards[i]) );
             }
         }
-        public void PlayerHand()
-        {
-            Console.WriteLine("Player's hand({0})", game.Player.Hand.TotalValue);
-            for (int i = 0; i < game.Player.Hand.Cards.Count; i++)
-            {
-                Console.WriteLine(Print(game.Player.Hand.Cards[i]));
-            }
-        }
+
         private  void ResultGame()
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -73,43 +69,24 @@ namespace BlackJack.Console
             
         }
         public void newGame()
-        { 
-            while (true)
-            {
-                var key = Console.ReadKey(true);
-
-                switch (key.Key)
+        {
+            var key = Console.ReadKey(true);
+            switch (key.Key)
                 {
 
                     case ConsoleKey.Enter:
                         Console.Clear();
-                        game.GameAction();
+                        game.GameStart();
                         break;
-                    case ConsoleKey.Backspace:
-                        if (game.Result!=GameResult.None)
-                        {
-                            Console.Clear();
-                            game.GameAction();
-                        }
-                        else
-                        {
-                            game.Stand();
-                        }
+                case ConsoleKey.Backspace:
+                    game.Stand();
                         break;
                     case ConsoleKey.Spacebar:
-                        if (game.Result != GameResult.None)
-                        {
-                            Console.Clear();
-                            game.GameAction();
-                        }
-                        else
-                        {
                             game.Hit();
-                        }
                         break;
                 }
-                        DealerHand();
-                        PlayerHand();
+                HandCard(game.Dealer);
+                HandCard(game.Player);
                         ResultGame();
                 if(game.Result == GameResult.None)
                 {
@@ -120,7 +97,7 @@ namespace BlackJack.Console
             
         }
     }
-}
+
 
 
   

@@ -5,12 +5,11 @@ using System.Linq;
 
 namespace BlackJack.Base
 {
-    public class Deck
+    public class GameService
     {
-
-        private List<Card> cards = new List<Card>(52);
+		private List<Card> cards = new List<Card>(52);
         Random random = new Random();
-        public Deck()
+        public void DeckCard()
         {
             var qvery =
                from suit in Enumerable.Range(1, 4)
@@ -34,23 +33,37 @@ namespace BlackJack.Base
 
         public void TakeCard(Hand hand)
         {
-
             var card = cards.First();
-            hand.AddCard(card);
+            hand.Cards.Add(card);
             cards.Remove(card);
             card = cards.First();
             if (hand.IsDealer)
             {
-                card.ShowCard();
+                card.FaceUp = !card.FaceUp;
             }
-            hand.AddCard(card);
+            hand.Cards.Add(card);
             cards.Remove(card);
         }
 
         public void GetCard(Hand hand)
         {
-            hand.AddCard(cards.First());
+            hand.Cards.Add(cards.First());
             cards.RemoveAt(0);
+        }
+       
+        // show hidden cards Dealer
+        public void Show(Hand hand)
+        {
+            foreach (var c in hand.Cards)
+            {
+               
+                    c.FaceUp = false;
+                
+            }
+        }
+        public void Clear(Hand hand)
+        {
+            hand.Cards.Clear();
         }
     }
 }

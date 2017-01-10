@@ -7,22 +7,15 @@ namespace BlackJack.Base
 {
     public class Hand
     {
-        public Hand(bool isDealer = false)
-        {
-            this.IsDealer = isDealer;
-        }
-        public bool IsDealer { get; set; }
-
-        //Card card = new Card();
+        public bool IsDealer { get; set; }  
         private readonly List<Card> cards = new List<Card>(6);
-        public List<Card> Cards
+        public  List<Card> Cards
         {
             get
             {
                 return cards;
             }
         }
-
         public int Softvalue
         {
             get
@@ -36,44 +29,31 @@ namespace BlackJack.Base
         {
             get
             {
-                var value = Softvalue;
-                var count = cards.Count(c => c.Rank == Rank.Ace);
-
-                return value;
+                var totalValue = Softvalue;
+               var count = cards.Count(c => c.Rank == Rank.Ace);
+                while (count-- > 0 && totalValue > 21)
+                {
+                    totalValue -= 9;
+                }
+                return totalValue;
             }
-
         }
         // count hidden cards Dealer
         public int FaceValue
         {
             get
             {
-                var faceValue = cards.Where(c => c.FaceUp)
+                var faceValue = cards.Where(c => !c.FaceUp)
                     .Select(c => (int)c.Rank > 1 && (int)c.Rank < 11 ? (int)c.Rank : 10).Sum();
-                var count = cards.Count(c => c.Rank == Rank.Ace);
-
+               var count = cards.Count(c => c.Rank == Rank.Ace);
+                while (count-- > 0 && faceValue > 21)
+                {
+                    faceValue -= 9;
+                }
                 return faceValue;
             }
         }
 
-        public void AddCard(Card card)
-        {
-            cards.Add(card);
-        }
-        // show hidden cards Dealer
-        public void Show()
-        {
-            foreach (var c in cards)
-            {
-                if (!c.FaceUp)
-                {
-                    c.ShowCard();
-                }
-            }
-        }
-        public void Clear()
-        {
-            cards.Clear();
-        }
+       
     }
 }

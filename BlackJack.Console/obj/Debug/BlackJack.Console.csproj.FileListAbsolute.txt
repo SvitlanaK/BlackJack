@@ -6,3 +6,11 @@ C:\Users\Светлана\Desktop\My\BlackJack.Console\bin\Debug\BlackJack.Base.
 C:\Users\Светлана\Desktop\My\BlackJack.Console\bin\Debug\BlackJack.Base.pdb
 C:\Users\Светлана\Desktop\My\BlackJack.Console\obj\Debug\BlackJack.Console.exe
 C:\Users\Светлана\Desktop\My\BlackJack.Console\obj\Debug\BlackJack.Console.pdb
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\bin\Debug\BlackJack.Console.exe.config
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\obj\Debug\BlackJack.Console.exe
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\obj\Debug\BlackJack.Console.pdb
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\bin\Debug\BlackJack.Console.exe
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\bin\Debug\BlackJack.Console.pdb
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\bin\Debug\BlackJack.Base.dll
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\bin\Debug\BlackJack.Base.pdb
+C:\Users\Светлана\Desktop\диплом\BlackJack-master\BlackJack.Console\obj\Debug\BlackJack.Console.csprojResolveAssemblyReference.cache

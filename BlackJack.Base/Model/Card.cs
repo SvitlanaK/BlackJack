@@ -14,9 +14,6 @@ namespace BlackJack.Base
             this.Suit = s;
             this.FaceUp = false;
         }
-        public void ShowCard()
-        {
-            this.FaceUp = !this.FaceUp;
-        }
+        
     }
 }

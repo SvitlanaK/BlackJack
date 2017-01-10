@@ -11,10 +11,11 @@ namespace BlackJack.Console
         {
             Console.WriteLine("PRESS ENTER, PLEASE");
             GameConsole action = new GameConsole();
-            
-            action.newGame();
+            while (true)
+            {
+                action.newGame();
+            }			
         }
-           
     }
 }
     
