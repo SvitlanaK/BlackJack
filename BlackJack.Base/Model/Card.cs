@@ -8,6 +8,7 @@ namespace BlackJack.Base
         public Suit Suit { get; set; }
         public Rank Rank { get; set; }
         public bool FaceUp { get; set; }
+		//
         public Card(Rank r, Suit s)
         {
             this.Rank = r;

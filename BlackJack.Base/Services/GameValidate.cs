@@ -1,74 +1,52 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
+﻿using BlackJack.Base.Model;
 
 namespace BlackJack.Base
 {
-    public class GameValidate { 
+    public class GameValidate : Game
+	{ 
+        GameService service = new GameService();
+		private Hand player = new Hand();
+		private Hand dealer = new Hand();
 
-        GameService server = new GameService();
-        private Hand player = new Hand();
-        private Hand dealer = new Hand();
-        
-        public GameValidate()
-        {
-            Player = player;
-            Dealer = dealer;
-            player.IsDealer = false;
-            dealer.IsDealer = true;
-        }
-        public Hand Player { get; set; }
-        public Hand Dealer { get; set; }
-        
-        public GameResult result;
-        public GameResult Result
-        {
-            get
-            {
-                return result;
-            }
-
-            private set
-            {
-                if (result != value)
-                {
-                    result = value;
-                }
-            }
-        }
-        public void GameStart()
+		public GameValidate()
+		{
+			Player = player;
+			Dealer = dealer;
+			Player.IsDealer = false;
+			Dealer.IsDealer = true;
+		}
+		public void GameStart()
         {
             Result = GameResult.None;
-            server.DeckCard();
-            server.Shuffle();
-            server.Clear(Dealer);
-            server.Clear(Player);
-            server.TakeCard(Dealer);
-            server.TakeCard(Player);
-            if(Player.Softvalue == 21 && Dealer.Softvalue == 21)
+			service.DeckCard();
+			service.Shuffle();
+			service.Clear(Dealer);
+			service.Clear(Player);
+			service.TakeCard(Dealer);
+			service.TakeCard(Player);
+			if(Player.Softvalue == 21 && Dealer.Softvalue == 21)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result = GameResult.Draw;
             }
             if(Player.Softvalue == 21)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result =  GameResult.PlayerWon;
             }
             if(Dealer.TotalValue == 21)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result = GameResult.DealerWon;
             }
         }
             
         public void Hit()
         {
-            server.GetCard(player);
+			service.GetCard(Player);
             if(Player.TotalValue > 21)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result = GameResult.DealerWon;
             }
         }
@@ -77,21 +55,21 @@ namespace BlackJack.Base
         {
             while (Dealer.Softvalue < 18)
             {
-                server.GetCard(Dealer);
+				service.GetCard(Dealer);
             }
             if(Dealer.TotalValue > 21 || Player.TotalValue > Dealer.TotalValue)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result = GameResult.PlayerWon;
             }
             if(Dealer.TotalValue == Player.TotalValue)
             {
-                server.Show(dealer);
+				service.Show(Dealer);
                 Result = GameResult.Draw;
             }
             if(Dealer.TotalValue <= 21 && Dealer.TotalValue > Player.TotalValue)
             {
-                server.Show(Dealer);
+				service.Show(Dealer);
                 Result = GameResult.DealerWon;
             }
             

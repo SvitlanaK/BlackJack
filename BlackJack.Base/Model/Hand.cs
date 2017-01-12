@@ -20,8 +20,7 @@ namespace BlackJack.Base
         {
             get
             {
-                int softValue = cards.Select(c => (int)c.Rank > 1 && (int)c.Rank < 11 ? (int)c.Rank : 10).Sum();
-                return softValue;
+                return cards.Select(c => (int)c.Rank > 1 && (int)c.Rank < 11 ? (int)c.Rank : 10).Sum();
             }
         }
 

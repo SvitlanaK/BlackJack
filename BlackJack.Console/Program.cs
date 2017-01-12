@@ -9,13 +9,13 @@ namespace BlackJack.Console
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("PRESS ENTER, PLEASE");
-            GameConsole action = new GameConsole();
-            while (true)
-            {
-                action.newGame();
-            }			
-        }
+			Console.WriteLine("PRESS ENTER, PLEASE");
+			GameConsole action = new GameConsole();
+			while(true)
+			{
+				action.Action();
+			}
+		}
     }
 }
     

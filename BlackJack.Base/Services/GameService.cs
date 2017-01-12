@@ -18,7 +18,6 @@ namespace BlackJack.Base
 
             cards = qvery.ToList();
         }
-            //Shuffle cards
         public void Shuffle()
         {
             List<Card> newCards = new List<Card>();
@@ -51,14 +50,11 @@ namespace BlackJack.Base
             cards.RemoveAt(0);
         }
        
-        // show hidden cards Dealer
         public void Show(Hand hand)
         {
             foreach (var c in hand.Cards)
             {
-               
-                    c.FaceUp = false;
-                
+               c.FaceUp = false;
             }
         }
         public void Clear(Hand hand)

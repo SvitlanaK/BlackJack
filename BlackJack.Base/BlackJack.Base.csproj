@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Card.cs" />
+    <Compile Include="Model\Game.cs" />
     <Compile Include="Services\GameService.cs" />
     <Compile Include="Services\GameValidate.cs" />
     <Compile Include="Model\GameResult.cs" />

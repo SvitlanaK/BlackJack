@@ -68,7 +68,7 @@ namespace BlackJack.Console
             Console.ResetColor();
             
         }
-        public void newGame()
+        public void Action()
         {
             var key = Console.ReadKey(true);
             switch (key.Key)
@@ -78,16 +78,18 @@ namespace BlackJack.Console
                         Console.Clear();
                         game.GameStart();
                         break;
-                case ConsoleKey.Backspace:
-                    game.Stand();
+
+					case ConsoleKey.Backspace:
+						game.Stand();
                         break;
+
                     case ConsoleKey.Spacebar:
-                            game.Hit();
-                        break;
+                        game.Hit();
+						break;
                 }
-                HandCard(game.Dealer);
-                HandCard(game.Player);
-                        ResultGame();
+						HandCard(game.Dealer);
+						HandCard(game.Player);
+					    ResultGame();
                 if(game.Result == GameResult.None)
                 {
                     Console.WriteLine("Hit - {Spacebar} or Stand - {backspace} and NewGame - {Enter}");
